@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+
+<body style="margin: 0;">
+
+    <div id="sidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a class="active" href="#home">home</a>
+        <a href="/pages/services.html">services</a>
+        <a href="#news">work</a>
+        <a href="#contact">contact</a>
+        <a href="/pages/about.html">about</a>
+    </div>
+    <div class="mobile-header">
+        <span class="open-side" onclick="openNav()">MENU</span>
+        <img style="width: 90px; text-align: center;" src="https://static1.squarespace.com/static/5d508e085f2af000019bcbb9/t/5d50a9112cf86f00010869ef/1614215316442/?format=1500w" />
+    </div>
+
+
+
+    <main id="main">
+        <div class="top-logo">
+            <img style="height: 160px; text-align: center;" src="https://static1.squarespace.com/static/5d508e085f2af000019bcbb9/t/5d50a9112cf86f00010869ef/1614215316442/?format=1500w" />
+        </div>
+        <div class="topnav" id="topnav">
+            <a class="active" href="#home">home</a>
+            <a href="/pages/services.html">services</a>
+            <a href="#news">work</a>
+            <a href="#contact">contact</a>
+            <a href="/pages/about.html">about</a>
+        </div>
+
+        <div class="main-swiper">
+            <div class="home-slides fade">
+                <img src="" style="width:100%">
+            </div>
+
+            <div class="home-slides fade">
+                <img src="" style="width:100%">
+            </div>
+
+            <div class="home-slides fade">
+                <img src="" style="width:100%">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+        <h1>BrktBytes, LLC</h1>
+    </main>
+</body>
+
+</html>
+
+
+<script>
+    window.onscroll = function() {
+        slickHeader()
+    };
+
+
+    var navbar = document.getElementById("topnav");
+
+    var sticky = navbar.offsetTop;
+
+    function slickHeader() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("home-slides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+
+    function openNav() {
+        document.getElementById("sidenav").style.width = "250px";
+    }
+
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+        document.getElementById("sidenav").style.width = "0";
+    }
+</script>
